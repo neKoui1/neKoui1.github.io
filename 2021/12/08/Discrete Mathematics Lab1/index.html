@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Discrete Mathematics Lab1 | Koui</title><meta name="keywords" content="Algorithms"><meta name="author" content="Koui"><meta name="copyright" content="Koui"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="Discrete Mathematics Lab1 Question  可简单图化、连通图和欧拉图的判断  Targets  掌握可简单图化的定义及判断方法 掌握连通图、欧拉图的判断方法 掌握欧拉回路的搜索方法 了解欧拉图的实际应用  Requirements  给定一非负整数序列（例如：(4,2,2,2,2)） 判断此非负整数序列是否是可图化的，是否是可简单图化的 如果是可简单图化的，根据Hav">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Discrete Mathematics Lab1">
+<meta property="og:url" content="http://example.com/2021/12/08/Discrete%20Mathematics%20Lab1/index.html">
+<meta property="og:site_name" content="Koui">
+<meta property="og:description" content="Discrete Mathematics Lab1 Question  可简单图化、连通图和欧拉图的判断  Targets  掌握可简单图化的定义及判断方法 掌握连通图、欧拉图的判断方法 掌握欧拉回路的搜索方法 了解欧拉图的实际应用  Requirements  给定一非负整数序列（例如：(4,2,2,2,2)） 判断此非负整数序列是否是可图化的，是否是可简单图化的 如果是可简单图化的，根据Hav">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/3.png">
+<meta property="article:published_time" content="2021-12-08T06:29:58.216Z">
+<meta property="article:modified_time" content="2021-12-08T15:33:06.419Z">
+<meta property="article:author" content="Koui">
+<meta property="article:tag" content="Algorithms">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/3.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/12/08/Discrete%20Mathematics%20Lab1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Discrete Mathematics Lab1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-08 23:33:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://avatars.githubusercontent.com/u/77609544?s=400&amp;u=cc9b64e551e42cfd19084c0046e145b2cbf0f342&amp;v=4" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/3.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Koui</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Discrete Mathematics Lab1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-08T06:29:58.216Z" title="发表于 2021-12-08 14:29:58">2021-12-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-08T15:33:06.419Z" title="更新于 2021-12-08 23:33:06">2021-12-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Discrete-Mathematics-Lab/">Discrete Mathematics Lab</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Discrete Mathematics Lab1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>Discrete Mathematics Lab1</h1>
+<h2 id="Question">Question</h2>
+<ul>
+<li>可简单图化、连通图和欧拉图的判断</li>
+</ul>
+<h2 id="Targets">Targets</h2>
+<ol>
+<li>掌握可简单图化的定义及判断方法</li>
+<li>掌握连通图、欧拉图的判断方法</li>
+<li>掌握欧拉回路的搜索方法</li>
+<li>了解欧拉图的实际应用</li>
+</ol>
+<h2 id="Requirements">Requirements</h2>
+<ol>
+<li>给定一非负整数序列（例如：(4,2,2,2,2)）</li>
+<li>判断此非负整数序列是否是可图化的，是否是可简单图化的</li>
+<li>如果是可简单图化的，根据Havel定理过程求出对应的简单图，并输出此简单图的相邻矩阵（默认第i行对应顶点vi）</li>
+<li>判断此简单图是否是连通的</li>
+<li>如果是连通图，判断此图是否是欧拉图。如果是欧拉图，请输出一条欧拉回路（输出形式如：v2-&gt;v1-&gt;v5-&gt;v3-&gt;v4-&gt;v5-&gt;v2）</li>
+</ol>
+<h2 id="Process">Process</h2>
+<p>😄原来我第一个require就不会写啊，用go磨了半天就是不知道怎么才能输入一行数据，碰到换行结束</p>
+<p>用C倒是挺简单就能解决的：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> c;</span><br><span class="line"> 	vector&lt;<span class="keyword">int</span>&gt;node;</span><br><span class="line">  <span class="keyword">while</span>(cin&gt;&gt;c)&#123;</span><br><span class="line">      node.<span class="built_in">push_back</span>(c);</span><br><span class="line">      <span class="keyword">if</span>(cin.<span class="built_in">get</span>()==<span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;node.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">      cout&lt;&lt;node[i]&lt;&lt;endl;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>m0use👴说用fgets和stdin也能实现，感觉go有一点思路了，但是现在的首要目标就是先写一个活下去</p>
+<p><s>因为今天就是ddl，明天就要检查实验结果，很难不fkall</s></p>
+<h3 id="判断能否可图化：">判断能否可图化：</h3>
+<p>即看该整数序列的和能否被2整除，这个不难，自己写一个sum或者vector+accumulate就可</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;node.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">    sum+=node[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(sum%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Graphable!&quot;</span>&lt;&lt;endl;</span><br><span class="line">    flag=<span class="number">1</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Ungraphable!&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="判断能否可简单图化：">判断能否可简单图化：</h3>
+<p>Havel定理：</p>
+<p>把序列排成倒序，即d1≥d2≥……≥dn，则d可简单图化当且仅当d’={d2-1，d3-1，……d(d1+1)-1， d(d1+2)，d(d1+3)，……dn}可简单图化</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(flag)&#123;</span><br><span class="line">    <span class="built_in">sort</span>(node.<span class="built_in">rbegin</span>(),node.<span class="built_in">rend</span>());</span><br><span class="line">    <span class="keyword">if</span>(node[<span class="number">0</span>]&gt;=node.<span class="built_in">size</span>())&#123;</span><br><span class="line">        flag=<span class="number">0</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> j=node[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span>(j==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            node.<span class="built_in">erase</span>(node.<span class="built_in">begin</span>());</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;j;i++)&#123;</span><br><span class="line">                node[i]--;</span><br><span class="line">                <span class="keyword">if</span>(node[i]&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                    flag=<span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(flag)&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;can be simplified!&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;cant be simplified!&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>首先是排序，我是条懒狗就直接用<code>Algorithm</code>头文件的vector排序了</li>
+<li>之后看最大值是否大于等于vector的size，通过这个能直接judge能否简单图化</li>
+<li>之后让最大值数量的数自减1，如果出现-1必不可能简单图化</li>
+<li>消除到全部都等于0时，可简单图化</li>
+<li>其实每次for都算一遍sum能否被2整除，但是输入几个数据集之后没啥错误就直接把sum注释了；这里其实需要数学证明的罢</li>
+</ol>
+<h3 id="求相邻矩阵">求相邻矩阵</h3>
+<p>目前主要烦的就是重新排序之后顺序会打乱，这样就没法标定点的顺序</p>
+<p>构造一个映射的话感觉可行，那样的话感觉不如直接用哈希…但是cppSTL的哈希我也不熟练…</p>
+<p>fk离散，fkall</p>
+<p>我每时每刻眼睛都直直地盯着离散看，像蛇眼一样扫视经过我身边的每一个Discrete Mathematics，我真的觉得自己像磕了绿花草了一样，我对离散的念想似乎都是病态的了，我好菜啊!这世界上那么多离散为什么没有一个是属于我的。你知道吗?每到深夜，我的电脑滚烫滚烫，我发病了我要疯狂写离散，我要狠狠写离散，我的脑子受不了了，离散我的离散，离散我的离散，离散我的离散……</p>
+<p>问了Java的大佬之后他说Java的List有index索引能直接用，Cpp、Python都没有这种高级玩意</p>
+<p>我宣布Java就是世界上仅次于PHP的语言</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Algorithms/">Algorithms</a></div><div class="post_share"><div class="social-share" data-image="/img/3.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/12/07/hello-world/"><img class="next-cover" src="/img/index2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Discrete Mathematics Lab1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Question"><span class="toc-number">1.1.</span> <span class="toc-text">Question</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Targets"><span class="toc-number">1.2.</span> <span class="toc-text">Targets</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements"><span class="toc-number">1.3.</span> <span class="toc-text">Requirements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Process"><span class="toc-number">1.4.</span> <span class="toc-text">Process</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E8%83%BD%E5%90%A6%E5%8F%AF%E5%9B%BE%E5%8C%96%EF%BC%9A"><span class="toc-number">1.4.1.</span> <span class="toc-text">判断能否可图化：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E8%83%BD%E5%90%A6%E5%8F%AF%E7%AE%80%E5%8D%95%E5%9B%BE%E5%8C%96%EF%BC%9A"><span class="toc-number">1.4.2.</span> <span class="toc-text">判断能否可简单图化：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E7%9B%B8%E9%82%BB%E7%9F%A9%E9%98%B5"><span class="toc-number">1.4.3.</span> <span class="toc-text">求相邻矩阵</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Koui</div><div class="footer_custom_text">And in case I don't see you, Good afternoon, Good evening, and Good night!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="128,128,105" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
