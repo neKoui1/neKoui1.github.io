@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Discrete Mathematics Lab3 | Koui</title><meta name="keywords" content="Algorithms"><meta name="author" content="Koui"><meta name="copyright" content="Koui"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="Question  平面图对偶图的求解  Targets  了解平面图的定义 掌握平面图对偶图的求解方法 掌握平面图与其对偶图之间顶点数、边数和面数的关系  Requirements  给定一平面图的面矩阵R和连通分支数p 输出此平面图的顶点数n、边数m和面数r 输出此平面图的对偶图的顶点数n*、边数m和面数r 输出此平面图的对偶图的相邻矩阵  Process 0x01 输入矩阵 受够了cpp到处">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Discrete Mathematics Lab3">
+<meta property="og:url" content="http://example.com/2021/12/21/Discrete-Mathematics-Lab3/index.html">
+<meta property="og:site_name" content="Koui">
+<meta property="og:description" content="Question  平面图对偶图的求解  Targets  了解平面图的定义 掌握平面图对偶图的求解方法 掌握平面图与其对偶图之间顶点数、边数和面数的关系  Requirements  给定一平面图的面矩阵R和连通分支数p 输出此平面图的顶点数n、边数m和面数r 输出此平面图的对偶图的顶点数n*、边数m和面数r 输出此平面图的对偶图的相邻矩阵  Process 0x01 输入矩阵 受够了cpp到处">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/11.jpg">
+<meta property="article:published_time" content="2021-12-21T11:41:18.126Z">
+<meta property="article:modified_time" content="2021-12-21T12:18:03.448Z">
+<meta property="article:author" content="Koui">
+<meta property="article:tag" content="Algorithms">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/11.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/12/21/Discrete-Mathematics-Lab3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Discrete Mathematics Lab3',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-21 20:18:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://avatars.githubusercontent.com/u/77609544?s=400&amp;u=cc9b64e551e42cfd19084c0046e145b2cbf0f342&amp;v=4" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/11.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Koui</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Discrete Mathematics Lab3</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-21T11:41:18.126Z" title="发表于 2021-12-21 19:41:18">2021-12-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-21T12:18:03.448Z" title="更新于 2021-12-21 20:18:03">2021-12-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Discrete-Mathematics-Lab/">Discrete Mathematics Lab</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>Question</h1>
+<ul>
+<li>平面图对偶图的求解</li>
+</ul>
+<h1>Targets</h1>
+<ol>
+<li>了解平面图的定义</li>
+<li>掌握平面图对偶图的求解方法</li>
+<li>掌握平面图与其对偶图之间顶点数、边数和面数的关系</li>
+</ol>
+<h1>Requirements</h1>
+<ol>
+<li>给定一平面图的面矩阵R和连通分支数p</li>
+<li>输出此平面图的顶点数n、边数m和面数r</li>
+<li>输出此平面图的对偶图的顶点数n*、边数m<em>和面数r</em></li>
+<li>输出此平面图的对偶图的相邻矩阵</li>
+</ol>
+<h1>Process</h1>
+<h2 id="0x01-输入矩阵">0x01 输入矩阵</h2>
+<p>受够了cpp到处都要搞全局变量所以干脆这次全都用全局变量算了</p>
+<p>go内置有init函数+严格语法规范+题目比较简单，索性用go了</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;输入面数：&quot;</span>)</span><br><span class="line">	fmt.Scanln(&amp;plane_num)</span><br><span class="line">	fmt.Println(<span class="string">&quot;输入边数：&quot;</span>)</span><br><span class="line">	fmt.Scanln(&amp;edge_num)</span><br><span class="line">	fmt.Println(<span class="string">&quot;输入连通分支数&quot;</span>)</span><br><span class="line">	fmt.Scanln(&amp;p)</span><br><span class="line">	fmt.Println(<span class="string">&quot;输入面矩阵：&quot;</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; plane_num; i++ &#123;</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; edge_num; j++ &#123;</span><br><span class="line">			fmt.Scanf(<span class="string">&quot;%d&quot;</span>, &amp;original_matrix[i][j])</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="0x02-test是否出错">0x02 test是否出错</h2>
+<p>打印输入的矩阵，观察是否有出错的地方</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test_original_print</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;原始面矩阵:&quot;</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;\t&quot;</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; edge_num; i++ &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;e%d\t&quot;</span>, i)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println()</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; plane_num; i++ &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;R%d\t&quot;</span>, i)</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; edge_num; j++ &#123;</span><br><span class="line">			fmt.Printf(<span class="string">&quot;%d\t&quot;</span>, original_matrix[i][j])</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println()</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="0x03-欧拉公式">0x03 欧拉公式</h2>
+<p>对偶图顶点数=原图面数</p>
+<p>对偶图边数=原图边数</p>
+<p>连通分支=原图连通分支，直接套欧拉公式<code>n-m+r=p+1</code></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	n-m+r=1+p</span></span><br><span class="line"><span class="comment"> 	n=1+p+m-r</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">get_n_m_r</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;顶点数 n =&quot;</span>, <span class="number">1</span>+p+edge_num-plane_num) 		<span class="comment">//n=1+p+edge_num-plane_num</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;边数 m =&quot;</span>, edge_num)                		<span class="comment">//m=edge_num</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;面数 r =&quot;</span>, plane_num)          			<span class="comment">//r=plane_num</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">get_dual_n_m_r</span><span class="params">()</span></span> &#123;</span><br><span class="line">	dual_n = plane_num</span><br><span class="line">	dual_m = edge_num</span><br><span class="line">	dual_r = <span class="number">2</span> + edge_num - plane_num</span><br><span class="line">	fmt.Println(<span class="string">&quot;对偶图顶点数 n =&quot;</span>, dual_n)</span><br><span class="line">	fmt.Println(<span class="string">&quot;对偶图边数 m =&quot;</span>, dual_m)</span><br><span class="line">	fmt.Println(<span class="string">&quot;对偶图面数 r =&quot;</span>, dual_r)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="0x04-Duel！">0x04 Duel！</h2>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">get_dual_adjancy</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; plane_num; i++ &#123;</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; edge_num; j++ &#123;</span><br><span class="line">			<span class="keyword">if</span> original_matrix[i][j] == <span class="number">1</span> &#123;</span><br><span class="line">				dual_adjancy[i][j] = <span class="number">1</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Printf(<span class="string">&quot;\t&quot;</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; dual_m; i++ &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;e%d\t&quot;</span>, i)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; dual_n; i++ &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;V%d\t&quot;</span>, i)</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; dual_m; j++ &#123;</span><br><span class="line">			fmt.Printf(<span class="string">&quot;%d\t&quot;</span>, dual_adjancy[i][j])</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>环形成的面也画了一个图试了试发现没什么不同…这特么的不就是两个完全一样的矩阵🐎 我不理解这个lab的意义在哪</p>
+<h1>Complete Code</h1>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> plane_num <span class="keyword">int</span></span><br><span class="line"><span class="keyword">var</span> edge_num <span class="keyword">int</span></span><br><span class="line"><span class="keyword">var</span> p <span class="keyword">int</span></span><br><span class="line"><span class="keyword">var</span> dual_n <span class="keyword">int</span></span><br><span class="line"><span class="keyword">var</span> dual_m <span class="keyword">int</span></span><br><span class="line"><span class="keyword">var</span> dual_r <span class="keyword">int</span></span><br><span class="line"><span class="keyword">var</span> original_matrix [<span class="number">20</span>][<span class="number">20</span>]<span class="keyword">int</span></span><br><span class="line"><span class="keyword">var</span> dual_adjancy [<span class="number">20</span>][<span class="number">20</span>]<span class="keyword">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;输入面数：&quot;</span>)</span><br><span class="line">	fmt.Scanln(&amp;plane_num)</span><br><span class="line">	fmt.Println(<span class="string">&quot;输入边数：&quot;</span>)</span><br><span class="line">	fmt.Scanln(&amp;edge_num)</span><br><span class="line">	fmt.Println(<span class="string">&quot;输入连通分支数&quot;</span>)</span><br><span class="line">	fmt.Scanln(&amp;p)</span><br><span class="line">	fmt.Println(<span class="string">&quot;输入面矩阵：&quot;</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; plane_num; i++ &#123;</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; edge_num; j++ &#123;</span><br><span class="line">			fmt.Scanf(<span class="string">&quot;%d&quot;</span>, &amp;original_matrix[i][j])</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test_original_print</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;原始面矩阵:&quot;</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;\t&quot;</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; edge_num; i++ &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;e%d\t&quot;</span>, i)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println()</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; plane_num; i++ &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;R%d\t&quot;</span>, i)</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; edge_num; j++ &#123;</span><br><span class="line">			fmt.Printf(<span class="string">&quot;%d\t&quot;</span>, original_matrix[i][j])</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println()</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	n-m+r=1+p</span></span><br><span class="line"><span class="comment"> 	n=1+p+m-r</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">get_n_m_r</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;顶点数 n =&quot;</span>, <span class="number">1</span>+p+edge_num-plane_num) 		<span class="comment">//n=1+p+edge_num-plane_num</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;边数 m =&quot;</span>, edge_num)                		<span class="comment">//m=edge_num</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;面数 r =&quot;</span>, plane_num)               		<span class="comment">//r=plane_num</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">get_dual_n_m_r</span><span class="params">()</span></span> &#123;</span><br><span class="line">	dual_n = plane_num</span><br><span class="line">	dual_m = edge_num</span><br><span class="line">	dual_r = <span class="number">2</span> + edge_num - plane_num</span><br><span class="line">	fmt.Println(<span class="string">&quot;对偶图顶点数 n =&quot;</span>, dual_n)</span><br><span class="line">	fmt.Println(<span class="string">&quot;对偶图边数 m =&quot;</span>, dual_m)</span><br><span class="line">	fmt.Println(<span class="string">&quot;对偶图面数 r =&quot;</span>, dual_r)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">get_dual_adjancy</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; plane_num; i++ &#123;</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; edge_num; j++ &#123;</span><br><span class="line">			<span class="keyword">if</span> original_matrix[i][j] == <span class="number">1</span> &#123;</span><br><span class="line">				dual_adjancy[i][j] = <span class="number">1</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Printf(<span class="string">&quot;\t&quot;</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; dual_m; i++ &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;e%d\t&quot;</span>, i)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; dual_n; i++ &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;V%d\t&quot;</span>, i)</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; dual_m; j++ &#123;</span><br><span class="line">			fmt.Printf(<span class="string">&quot;%d\t&quot;</span>, dual_adjancy[i][j])</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	test_original_print()</span><br><span class="line">	get_n_m_r()</span><br><span class="line">	get_dual_n_m_r()</span><br><span class="line">	get_dual_adjancy()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Algorithms/">Algorithms</a></div><div class="post_share"><div class="social-share" data-image="/img/11.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/12/16/Fk-Final-Exam-1/"><img class="next-cover" src="/img/9.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Fk Final Exam 1</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/12/08/Discrete%20Mathematics%20Lab1/" title="Discrete Mathematics Lab1"><img class="cover" src="/img/3.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-08</div><div class="title">Discrete Mathematics Lab1</div></div></a></div><div><a href="/2021/12/14/Discrete%20Mathematics%20Lab2/" title="Discrete Mathematics Lab2"><img class="cover" src="/img/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-14</div><div class="title">Discrete Mathematics Lab2</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Question</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">Targets</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">Requirements</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">Process</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E8%BE%93%E5%85%A5%E7%9F%A9%E9%98%B5"><span class="toc-number">4.1.</span> <span class="toc-text">0x01 输入矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-test%E6%98%AF%E5%90%A6%E5%87%BA%E9%94%99"><span class="toc-number">4.2.</span> <span class="toc-text">0x02 test是否出错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E6%AC%A7%E6%8B%89%E5%85%AC%E5%BC%8F"><span class="toc-number">4.3.</span> <span class="toc-text">0x03 欧拉公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-Duel%EF%BC%81"><span class="toc-number">4.4.</span> <span class="toc-text">0x04 Duel！</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">Complete Code</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Koui</div><div class="footer_custom_text">And in case I don't see you, Good afternoon, Good evening, and Good night!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="128,128,105" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script></div></body></html>
